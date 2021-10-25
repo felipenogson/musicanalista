@@ -40,7 +40,7 @@
             </select>
             <button type="submit" class="btn btn-outline-secondary my-2">Go Find it !</button>
             <div style=" display: inline; " class="htmx-indicator" id="spinner">
-              <img src="/static/assets/loader.svg" class="htmx-indicator mx-5" alt="Retrieving data">
+              <img src="{{ url_for('static', filename='assets/loader.svg') }}" class="htmx-indicator mx-5" alt="Retrieving data">
               <p class="text-warning htmx-indicator">Wait, Retrieving Data..</p>
             </div>
           </div>
