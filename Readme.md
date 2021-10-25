@@ -22,14 +22,14 @@ This is the results that I found exploring a dataset about music albums,
 #### Where this data came from?
 I found this data set on [Kaggle](https://www.kaggle.com/michaelbryantds/top-5000-albums-of-all-time-rateyourmusiccom)
 
-Context
-This dataset contains the top 5000 albums of all time as decided on by the users of [rateyourmusic.com](rateyourmusic.com).
-
-Content
-The dataset was acquired by scraping on 12 October 2021. It contains 5000 ranked albums including ranking, album name, artist name, release date, genres, descriptors, average rating, number of ratings, and number of reviews.
-
-The scraper can be found at [this GitHub repo](https://github.com/michaelbryantds/rateyourmusic-scraper).
-
+>Context
+>This dataset contains the top 5000 albums of all time as decided on by the users of [rateyourmusic.com](rateyourmusic.com).
+>
+>Content
+>The dataset was acquired by scraping on 12 October 2021. It contains 5000 ranked albums including ranking, album name, artist name, release date, genres, descriptors, average >rating, number of ratings, and number of reviews.
+>
+>The scraper can be found at [this GitHub repo](https://github.com/michaelbryantds/rateyourmusic-scraper).
+> <cite>--Description from keggel site</cite>
 #### You should be very bussy, isn't it?
 Thanks for asking. Actually no, I don't do this for a living, but I love to do it, so what I am trying to say is that I am open for hiring. If you think that I can help you or your team, don't hestitate on contact me <felipe@nogson.com>.
 
