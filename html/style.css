@@ -1,0 +1,16 @@
+body {
+	box-sizing: border-box;
+}
+
+#hero{
+	height: 100vh;
+}
+
+.row{
+	/* min-height: 100vh; */
+}
+
+hr{
+	width: 50%;
+	border-radius: 10px;
+}

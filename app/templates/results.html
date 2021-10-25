@@ -1,0 +1,36 @@
+<h3 class="display-1 text-center text-secondary"> {{ album_info['Release Date'] }}</h3>
+<h2 class="text-danger text-center"> {{ album_info['Album'] }} by {{ album_info['Artist Name'] }}</h2>
+<div class="row d-flex justify-content-center align-items-stretch">
+<div class="col-10 col-md-5 d-flex align-items-stretch">
+  <div class="card border-secondary mb-3">
+    <div class="card-header">Cover</div>
+    <div class="card-body">
+      <img src="{{album_info['cover_art_url']}}" alt="{{ album_info['Album']}} Cover" class="img-fluid">
+    </div>
+  </div>
+</div>
+<div class="col-10 col-md-5 d-flex align-items-stretch">
+  <div class="card border-secondary mb-3 w-100">
+    <div class="card-header">Track List</div>
+    <div class="card-body">
+      <ul class="list-group">
+        {% for song in album_info['track_list'] %}
+        <li class="list-group-item">{{song['position']}} {{song['title']}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+<div class="row">
+<div class="col-12">
+  <div class="card border-success mb-3">
+  <div class="card-header">Info</div>
+  <div class="card-body">
+    <h4 class="card-title">{{album_info['Album']}}</h4>
+    <p class="card-text">{{ wiki.summary }}</p>
+    <a href="{{ wiki.url }}">Read more..</a>
+  </div>
+</div>
+</div>
+</div>
