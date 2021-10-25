@@ -18,8 +18,9 @@
       <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
         <h1 class="text-white display-1 mx-3">Music Analista</h1>
         <h3 class="p-0 mx-3">Find the best Album from a year in the time</h3>
-        <form hx-post="{{ url_for('results') }}" hx-target="#results" hx-swap="innerHTML show:top">
-          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <form hx-post="{{ url_for('results') }}" hx-target="#results" hx-indicator="#spinner"
+          hx-swap="innerHTML show:top">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
           <div class="form-group mx-3">
             <label for="musicYear" class="form-label mt-4">For instance your Birthdate</label>
             <select class="form-select" id="musicYear" style="max-width: 300px;" name="year">
@@ -29,105 +30,111 @@
               {% endfor %}
             </select>
             <button type="submit" class="btn btn-outline-secondary my-2">Go Find it !</button>
+            <img src="{{ url_for('static', filename='assets/loader.svg') }}" class="htmx-indicator mx-5" id="spinner"
+              alt="Retrieving data">
           </div>
         </form>
       </div>
       <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
         <div id="hero-image">
-          <img class="img-fluid" src="{{url_for('static', filename='assets/illustrations/Group_1.svg')}}" alt="Music Analitico">
+          <img class="img-fluid" src="{{url_for('static', filename='assets/illustrations/Group_1.svg')}}"
+            alt="Music Analitico">
         </div>
       </div>
     </div>
     <hr class="bg-secondary mx-auto mb-5" size="10">
     <div class="row">
-      <div class="col-12 col-md-5" data-aos="fade-right" data-aos-offset="400" data-aos-anchor-placement="center-bottom">
+      <div class="col-12 col-md-5" data-aos="fade-right" data-aos-offset="400"
+        data-aos-anchor-placement="center-bottom">
         <img src="{{url_for('static', filename='assets/illustrations/Group_5.svg')}}" alt="" class="img-fluid">
       </div>
       <div class="col-12 col-md-7" data-aos="fade-left" data-aos-anchor-placement="center-bottom">
         <h2 class="display-3"> Best Albums of all the Time</h2>
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-primary">
-              <th scope="col">Ranking</th>
-              <th scope="col">Album</th>
-              <th scope="col">Artist Name</th>
-              <th scope="col">Genre</th>
-              <th scope="col">Year</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>OK Computer</td>
-              <td>Radiohead</td>
-              <td>Alternative Rock, Art Rock</td>
-              <td>1997</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>Wish You Were Here</td>
-              <td>Pink Floyd</td>
-              <td>Progressive Rock, Art Rock</td>
-              <td>1975</td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td>In the Court of the Crimson King</td>
-              <td>King Crimson</td>
-              <td>Progressive Rock, Art Rock</td>
-              <td>1969</td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td>Kid A</td>
-              <td>Radiohead</td>
-              <td>Art Rock, Experimental Rock, Electronic</td>
-              <td>2000</td>
-            </tr>
-            <tr>
-              <th>5</th>
-              <td>To Pimp a Butterfly</td>
-              <td>Kendrick Lamar</td>
-              <td>Conscious Hip Hop, West Coast Hip Hop, Jazz Rap</td>
-              <td>2015</td>
-            </tr>
-            <tr>
-              <th>6</th>
-              <td>Loveless</td>
-              <td>My Bloody Valentine</td>
-              <td>Shoegaze, Noise Pop</td>
-              <td>1991</td>
-            </tr>
-            <tr>
-              <th>7</th>
-              <td>The Dark Side of the Moon</td>
-              <td>Pink Floyd</td>
-              <td>Art Rock, Progressive Rock</td>
-              <td>1973</td>
-            </tr>
-            <tr>
-              <th>8</th>
-              <td>Abbey Road</td>
-              <td>The Beatles</td>
-              <td>Pop Rock</td>
-              <td>1969</td>
-            </tr>
-            <tr>
-              <th>9</th>
-              <td>The Velvet Underground &amp; Nico</td>
-              <td>The Velvet Underground &amp; Nico</td>
-              <td>Art Rock, Experimental Rock</td>
-              <td>1967</td>
-            </tr>
-            <tr>
-              <th>10</th>
-              <td>The Rise and Fall of Ziggy Stardust and the Spiders From Mars</td>
-              <td>David Bowie</td>
-              <td>Glam Rock, Pop Rock</td>
-              <td>1972</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-primary">
+                <th scope="col">Ranking</th>
+                <th scope="col">Album</th>
+                <th scope="col">Artist Name</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>1</th>
+                <td>OK Computer</td>
+                <td>Radiohead</td>
+                <td>Alternative Rock, Art Rock</td>
+                <td>1997</td>
+              </tr>
+              <tr>
+                <th>2</th>
+                <td>Wish You Were Here</td>
+                <td>Pink Floyd</td>
+                <td>Progressive Rock, Art Rock</td>
+                <td>1975</td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td>In the Court of the Crimson King</td>
+                <td>King Crimson</td>
+                <td>Progressive Rock, Art Rock</td>
+                <td>1969</td>
+              </tr>
+              <tr>
+                <th>4</th>
+                <td>Kid A</td>
+                <td>Radiohead</td>
+                <td>Art Rock, Experimental Rock, Electronic</td>
+                <td>2000</td>
+              </tr>
+              <tr>
+                <th>5</th>
+                <td>To Pimp a Butterfly</td>
+                <td>Kendrick Lamar</td>
+                <td>Conscious Hip Hop, West Coast Hip Hop, Jazz Rap</td>
+                <td>2015</td>
+              </tr>
+              <tr>
+                <th>6</th>
+                <td>Loveless</td>
+                <td>My Bloody Valentine</td>
+                <td>Shoegaze, Noise Pop</td>
+                <td>1991</td>
+              </tr>
+              <tr>
+                <th>7</th>
+                <td>The Dark Side of the Moon</td>
+                <td>Pink Floyd</td>
+                <td>Art Rock, Progressive Rock</td>
+                <td>1973</td>
+              </tr>
+              <tr>
+                <th>8</th>
+                <td>Abbey Road</td>
+                <td>The Beatles</td>
+                <td>Pop Rock</td>
+                <td>1969</td>
+              </tr>
+              <tr>
+                <th>9</th>
+                <td>The Velvet Underground &amp; Nico</td>
+                <td>The Velvet Underground &amp; Nico</td>
+                <td>Art Rock, Experimental Rock</td>
+                <td>1967</td>
+              </tr>
+              <tr>
+                <th>10</th>
+                <td>The Rise and Fall of Ziggy Stardust and the Spiders From Mars</td>
+                <td>David Bowie</td>
+                <td>Glam Rock, Pop Rock</td>
+                <td>1972</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -136,235 +143,245 @@
     <div class="row">
       <div class="col-12 col-md-4" data-aos="fade-down-right" data-aos-anchor-placement="center-bottom">
         <h3>60's</h3>
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-primary" style="text-align: left;">
-              <th>Year</th>
-              <th>Album</th>
-              <th>Artist</th>
-              <th>Genres</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1969</td>
-              <td>In the Court of the Crimson King</td>
-              <td>King Crimson</td>
-              <td>Progressive Rock</td>
-            </tr>
-            <tr>
-              <td>1969</td>
-              <td>Abbey Road</td>
-              <td>The Beatles</td>
-              <td>Pop Rock</td>
-            </tr>
-            <tr>
-              <td>1967</td>
-              <td>The Velvet Underground &amp; Nico</td>
-              <td>The Velvet Underground &amp; Nico</td>
-              <td>Art Rock</td>
-            </tr>
-            <tr>
-              <td>1966</td>
-              <td>Revolver</td>
-              <td>The Beatles</td>
-              <td>Pop Rock</td>
-            </tr>
-            <tr>
-              <td>1963</td>
-              <td>The Black Saint and the Sinner Lady</td>
-              <td>Mingus</td>
-              <td>Avant-Garde Jazz</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-primary" style="text-align: left;">
+                <th>Year</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Genres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1969</td>
+                <td>In the Court of the Crimson King</td>
+                <td>King Crimson</td>
+                <td>Progressive Rock</td>
+              </tr>
+              <tr>
+                <td>1969</td>
+                <td>Abbey Road</td>
+                <td>The Beatles</td>
+                <td>Pop Rock</td>
+              </tr>
+              <tr>
+                <td>1967</td>
+                <td>The Velvet Underground &amp; Nico</td>
+                <td>The Velvet Underground &amp; Nico</td>
+                <td>Art Rock</td>
+              </tr>
+              <tr>
+                <td>1966</td>
+                <td>Revolver</td>
+                <td>The Beatles</td>
+                <td>Pop Rock</td>
+              </tr>
+              <tr>
+                <td>1963</td>
+                <td>The Black Saint and the Sinner Lady</td>
+                <td>Mingus</td>
+                <td>Avant-Garde Jazz</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="col-12 col-md-4" data-aos="flip-up" data-aos-anchor-placement="center-bottom">
         <img src="{{url_for('static', filename='assets/illustrations/Group_2.svg')}}" alt="" class="img-fluid">
       </div>
-      <div class="col-12 col-md-4" data-aos="fade-down-left" data-aos-anchor-placement="center-bottom" >
+      <div class="col-12 col-md-4" data-aos="fade-down-left" data-aos-anchor-placement="center-bottom">
         <h3>70s</h3>
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-primary" style="text-align: left;">
-              <th>Year</th>
-              <th>Album</th>
-              <th>Artist</th>
-              <th>Genres</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1975</td>
-              <td>Wish You Were Here</td>
-              <td>Pink Floyd</td>
-              <td>Progressive Rock</td>
-            </tr>
-            <tr>
-              <td>1973</td>
-              <td>The Dark Side of the Moon</td>
-              <td>Pink Floyd</td>
-              <td>Art Rock</td>
-            </tr>
-            <tr>
-              <td>1972</td>
-              <td>The Rise and Fall of Ziggy Stardust and the Spiders From Mars</td>
-              <td>David Bowie</td>
-              <td>Glam Rock</td>
-            </tr>
-            <tr>
-              <td>1970</td>
-              <td>Paranoid</td>
-              <td>Black Sabbath</td>
-              <td>Heavy Metal</td>
-            </tr>
-            <tr>
-              <td>1974</td>
-              <td>Red</td>
-              <td>King Crimson</td>
-              <td>Progressive Rock</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-primary" style="text-align: left;">
+                <th>Year</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Genres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1975</td>
+                <td>Wish You Were Here</td>
+                <td>Pink Floyd</td>
+                <td>Progressive Rock</td>
+              </tr>
+              <tr>
+                <td>1973</td>
+                <td>The Dark Side of the Moon</td>
+                <td>Pink Floyd</td>
+                <td>Art Rock</td>
+              </tr>
+              <tr>
+                <td>1972</td>
+                <td>The Rise and Fall of Ziggy Stardust and the Spiders From Mars</td>
+                <td>David Bowie</td>
+                <td>Glam Rock</td>
+              </tr>
+              <tr>
+                <td>1970</td>
+                <td>Paranoid</td>
+                <td>Black Sabbath</td>
+                <td>Heavy Metal</td>
+              </tr>
+              <tr>
+                <td>1974</td>
+                <td>Red</td>
+                <td>King Crimson</td>
+                <td>Progressive Rock</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
       </div>
       <div class="col-12 col-md-4" data-aos="fade-up-right" data-aos-anchor-placement="center-bottom">
         <h3>80s</h3>
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-primary" style="text-align: left;">
-              <th>Year</th>
-              <th>Album</th>
-              <th>Artist</th>
-              <th>Genres</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1980</td>
-              <td>Remain in Light</td>
-              <td>Talking Heads</td>
-              <td>New Wave</td>
-            </tr>
-            <tr>
-              <td>1989</td>
-              <td>Disintegration</td>
-              <td>The Cure</td>
-              <td>Gothic Rock</td>
-            </tr>
-            <tr>
-              <td>1986</td>
-              <td>The Queen Is Dead</td>
-              <td>The Smiths</td>
-              <td>Jangle Pop</td>
-            </tr>
-            <tr class="table-warning">
-              <td>1989</td>
-              <td>Doolittle</td>
-              <td>Pixies</td>
-              <td>Alternative Rock</td>
-            </tr>
-            <tr>
-              <td>1985</td>
-              <td>Hounds of Love</td>
-              <td>Kate Bush</td>
-              <td>Art Pop</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-primary" style="text-align: left;">
+                <th>Year</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Genres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1980</td>
+                <td>Remain in Light</td>
+                <td>Talking Heads</td>
+                <td>New Wave</td>
+              </tr>
+              <tr>
+                <td>1989</td>
+                <td>Disintegration</td>
+                <td>The Cure</td>
+                <td>Gothic Rock</td>
+              </tr>
+              <tr>
+                <td>1986</td>
+                <td>The Queen Is Dead</td>
+                <td>The Smiths</td>
+                <td>Jangle Pop</td>
+              </tr>
+              <tr class="table-warning">
+                <td>1989</td>
+                <td>Doolittle</td>
+                <td>Pixies</td>
+                <td>Alternative Rock</td>
+              </tr>
+              <tr>
+                <td>1985</td>
+                <td>Hounds of Love</td>
+                <td>Kate Bush</td>
+                <td>Art Pop</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
 
       </div>
       <div class="col-12 col-md-4" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
         <h3>90s</h3>
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-primary" style="text-align: left;">
-              <th>Year</th>
-              <th>Album</th>
-              <th>Artist</th>
-              <th>Genres</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1997</td>
-              <td>OK Computer</td>
-              <td>Radiohead</td>
-              <td>Alternative Rock, Art Rock</td>
-            </tr>
-            <tr>
-              <td>1991</td>
-              <td>Loveless</td>
-              <td>My Bloody Valentine</td>
-              <td>Shoegaze, Noise Pop</td>
-            </tr>
-            <tr>
-              <td>1994</td>
-              <td>Illmatic</td>
-              <td>Nas</td>
-              <td>East Coast Hip Hop, Boom Bap, Hardcore Hip Hop</td>
-            </tr>
-            <tr>
-              <td>1998</td>
-              <td>In the Aeroplane Over the Sea</td>
-              <td>Neutral Milk Hotel</td>
-              <td>Indie Folk, Indie Rock</td>
-            </tr>
-            <tr>
-              <td>1993</td>
-              <td>Enter the Wu-Tang (36 Chambers)</td>
-              <td>Wu-Tang Clan</td>
-              <td>East Coast Hip Hop, Boom Bap, Hardcore Hip Hop</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-primary" style="text-align: left;">
+                <th>Year</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Genres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1997</td>
+                <td>OK Computer</td>
+                <td>Radiohead</td>
+                <td>Alternative Rock, Art Rock</td>
+              </tr>
+              <tr>
+                <td>1991</td>
+                <td>Loveless</td>
+                <td>My Bloody Valentine</td>
+                <td>Shoegaze, Noise Pop</td>
+              </tr>
+              <tr>
+                <td>1994</td>
+                <td>Illmatic</td>
+                <td>Nas</td>
+                <td>East Coast Hip Hop, Boom Bap, Hardcore Hip Hop</td>
+              </tr>
+              <tr>
+                <td>1998</td>
+                <td>In the Aeroplane Over the Sea</td>
+                <td>Neutral Milk Hotel</td>
+                <td>Indie Folk, Indie Rock</td>
+              </tr>
+              <tr>
+                <td>1993</td>
+                <td>Enter the Wu-Tang (36 Chambers)</td>
+                <td>Wu-Tang Clan</td>
+                <td>East Coast Hip Hop, Boom Bap, Hardcore Hip Hop</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="col-12 col-md-4" data-aos="fade-up-left" data-aos-anchor-placement="center-bottom">
         <h3>2000s</h3>
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-primary" style="text-align: left;">
-              <th>Year</th>
-              <th>Album</th>
-              <th>Artist</th>
-              <th>Genres</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2000</td>
-              <td>Kid A</td>
-              <td>Radiohead</td>
-              <td>Art Rock, Experimental Rock, Electronic</td>
-            </tr>
-            <tr>
-              <td>2015</td>
-              <td>To Pimp a Butterfly</td>
-              <td>Kendrick Lamar</td>
-              <td>Conscious Hip Hop, West Coast Hip Hop, Jazz Rap</td>
-            </tr>
-            <tr>
-              <td>2004</td>
-              <td>Madvillainy</td>
-              <td>Madvillain</td>
-              <td>Abstract Hip Hop</td>
-            </tr>
-            <tr>
-              <td>2007</td>
-              <td>In Rainbows</td>
-              <td>Radiohead</td>
-              <td>Art Rock, Alternative Rock</td>
-            </tr>
-            <tr>
-              <td>2012</td>
-              <td>good kid, m.A.A.d city</td>
-              <td>Kendrick Lamar</td>
-              <td>West Coast Hip Hop, Conscious Hip Hop</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-primary" style="text-align: left;">
+                <th>Year</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Genres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2000</td>
+                <td>Kid A</td>
+                <td>Radiohead</td>
+                <td>Art Rock, Experimental Rock, Electronic</td>
+              </tr>
+              <tr>
+                <td>2015</td>
+                <td>To Pimp a Butterfly</td>
+                <td>Kendrick Lamar</td>
+                <td>Conscious Hip Hop, West Coast Hip Hop, Jazz Rap</td>
+              </tr>
+              <tr>
+                <td>2004</td>
+                <td>Madvillainy</td>
+                <td>Madvillain</td>
+                <td>Abstract Hip Hop</td>
+              </tr>
+              <tr>
+                <td>2007</td>
+                <td>In Rainbows</td>
+                <td>Radiohead</td>
+                <td>Art Rock, Alternative Rock</td>
+              </tr>
+              <tr>
+                <td>2012</td>
+                <td>good kid, m.A.A.d city</td>
+                <td>Kendrick Lamar</td>
+                <td>West Coast Hip Hop, Conscious Hip Hop</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <hr class="bg-secondary mx-auto mb-5" size="10">
@@ -386,127 +403,129 @@
               <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr class="table-primary" style="text-align: left;">
-                        <th>Album</th>
-                        <th>Year</th>
-                        <th>Overall Ranking</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Kind of Blue</td>
-                        <td>1959</td>
-                        <td>19</td>
-                      </tr>
-                      <tr>
-                        <td>In a Silent Way</td>
-                        <td>1969</td>
-                        <td>38</td>
-                      </tr>
-                      <tr>
-                        <td>Bitches Brew</td>
-                        <td>1970</td>
-                        <td>48</td>
-                      </tr>
-                      <tr>
-                        <td>Get Up With It</td>
-                        <td>1974</td>
-                        <td>204</td>
-                      </tr>
-                      <tr>
-                        <td>A Tribute to Jack Johnson</td>
-                        <td>1971</td>
-                        <td>216</td>
-                      </tr>
-                      <tr>
-                        <td>On the Corner</td>
-                        <td>1972</td>
-                        <td>371</td>
-                      </tr>
-                      <tr>
-                        <td>Sketches of Spain</td>
-                        <td>1960</td>
-                        <td>540</td>
-                      </tr>
-                      <tr>
-                        <td>Miles Smiles</td>
-                        <td>1967</td>
-                        <td>883</td>
-                      </tr>
-                      <tr>
-                        <td>'Round About Midnight</td>
-                        <td>1957</td>
-                        <td>898</td>
-                      </tr>
-                      <tr>
-                        <td>Ascenseur pour l'échafaud</td>
-                        <td>1958</td>
-                        <td>982</td>
-                      </tr>
-                      <tr>
-                        <td>Nefertiti</td>
-                        <td>1968</td>
-                        <td>1090</td>
-                      </tr>
-                      <tr>
-                        <td>Milestones</td>
-                        <td>1958</td>
-                        <td>1103</td>
-                      </tr>
-                      <tr>
-                        <td>Workin' With the Miles Davis Quintet</td>
-                        <td>1959</td>
-                        <td>1352</td>
-                      </tr>
-                      <tr>
-                        <td>Big Fun</td>
-                        <td>1974</td>
-                        <td>1396</td>
-                      </tr>
-                      <tr>
-                        <td>Filles de Kilimanjaro</td>
-                        <td>1969</td>
-                        <td>1400</td>
-                      </tr>
-                      <tr>
-                        <td>E.S.P.</td>
-                        <td>1965</td>
-                        <td>1991</td>
-                      </tr>
-                      <tr>
-                        <td>Cookin' With the Miles Davis Quintet</td>
-                        <td>1957</td>
-                        <td>2148</td>
-                      </tr>
-                      <tr>
-                        <td>Relaxin' With the Miles Davis Quintet</td>
-                        <td>1958</td>
-                        <td>2923</td>
-                      </tr>
-                      <tr>
-                        <td>Porgy and Bess</td>
-                        <td>1959</td>
-                        <td>3078</td>
-                      </tr>
-                      <tr>
-                        <td>Steamin' With the Miles Davis Quintet</td>
-                        <td>1961</td>
-                        <td>3414</td>
-                      </tr>
-                      <tr>
-                        <td>Sorcerer</td>
-                        <td>1967</td>
-                        <td>4127</td>
-                      </tr>
-                      <tr>
-                        <td>Miles in the Sky</td>
-                        <td>1968</td>
-                        <td>4457</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr class="table-primary" style="text-align: left;">
+                          <th>Album</th>
+                          <th>Year</th>
+                          <th>Overall Ranking</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Kind of Blue</td>
+                          <td>1959</td>
+                          <td>19</td>
+                        </tr>
+                        <tr>
+                          <td>In a Silent Way</td>
+                          <td>1969</td>
+                          <td>38</td>
+                        </tr>
+                        <tr>
+                          <td>Bitches Brew</td>
+                          <td>1970</td>
+                          <td>48</td>
+                        </tr>
+                        <tr>
+                          <td>Get Up With It</td>
+                          <td>1974</td>
+                          <td>204</td>
+                        </tr>
+                        <tr>
+                          <td>A Tribute to Jack Johnson</td>
+                          <td>1971</td>
+                          <td>216</td>
+                        </tr>
+                        <tr>
+                          <td>On the Corner</td>
+                          <td>1972</td>
+                          <td>371</td>
+                        </tr>
+                        <tr>
+                          <td>Sketches of Spain</td>
+                          <td>1960</td>
+                          <td>540</td>
+                        </tr>
+                        <tr>
+                          <td>Miles Smiles</td>
+                          <td>1967</td>
+                          <td>883</td>
+                        </tr>
+                        <tr>
+                          <td>'Round About Midnight</td>
+                          <td>1957</td>
+                          <td>898</td>
+                        </tr>
+                        <tr>
+                          <td>Ascenseur pour l'échafaud</td>
+                          <td>1958</td>
+                          <td>982</td>
+                        </tr>
+                        <tr>
+                          <td>Nefertiti</td>
+                          <td>1968</td>
+                          <td>1090</td>
+                        </tr>
+                        <tr>
+                          <td>Milestones</td>
+                          <td>1958</td>
+                          <td>1103</td>
+                        </tr>
+                        <tr>
+                          <td>Workin' With the Miles Davis Quintet</td>
+                          <td>1959</td>
+                          <td>1352</td>
+                        </tr>
+                        <tr>
+                          <td>Big Fun</td>
+                          <td>1974</td>
+                          <td>1396</td>
+                        </tr>
+                        <tr>
+                          <td>Filles de Kilimanjaro</td>
+                          <td>1969</td>
+                          <td>1400</td>
+                        </tr>
+                        <tr>
+                          <td>E.S.P.</td>
+                          <td>1965</td>
+                          <td>1991</td>
+                        </tr>
+                        <tr>
+                          <td>Cookin' With the Miles Davis Quintet</td>
+                          <td>1957</td>
+                          <td>2148</td>
+                        </tr>
+                        <tr>
+                          <td>Relaxin' With the Miles Davis Quintet</td>
+                          <td>1958</td>
+                          <td>2923</td>
+                        </tr>
+                        <tr>
+                          <td>Porgy and Bess</td>
+                          <td>1959</td>
+                          <td>3078</td>
+                        </tr>
+                        <tr>
+                          <td>Steamin' With the Miles Davis Quintet</td>
+                          <td>1961</td>
+                          <td>3414</td>
+                        </tr>
+                        <tr>
+                          <td>Sorcerer</td>
+                          <td>1967</td>
+                          <td>4127</td>
+                        </tr>
+                        <tr>
+                          <td>Miles in the Sky</td>
+                          <td>1968</td>
+                          <td>4457</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
@@ -514,67 +533,72 @@
         </div>
         <div>
           <h3 class="mt-5"> Album with the Best Rating</h3>
-          <table class="table table-hover" data-aos="zoom-in" data-aos-anchor-placement="center-bottom">
-            <thead>
-              <tr class="table-primary" style="text-align: left;">
-                <th>Ranking</th>
-                <th>Album</th>
-                <th>Artist</th>
-                <th>Year</th>
-                <th>Average Rating</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>14</td>
-                <td>The Black Saint and the Sinner Lady</td>
-                <td>Mingus</td>
-                <td>1963</td>
-                <td>4.34</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-hover" data-aos="zoom-in" data-aos-anchor-placement="center-bottom">
+              <thead>
+                <tr class="table-primary" style="text-align: left;">
+                  <th>Ranking</th>
+                  <th>Album</th>
+                  <th>Artist</th>
+                  <th>Year</th>
+                  <th>Average Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>14</td>
+                  <td>The Black Saint and the Sinner Lady</td>
+                  <td>Mingus</td>
+                  <td>1963</td>
+                  <td>4.34</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div>
           <h3 class="mt-5">Best Albums with Jazz in Genre</h3>
-          <table class="table table-hover" data-aos="zoom-in" data-aos-anchor-placement="center-bottom">
-            <thead>
-              <tr class="table-primary" style="text-align: left;">
-                <th>Overall Ranking</th>
-                <th>Album</th>
-                <th>Artist</th>
-                <th>Genre</th>
-                <th>Year</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>5</td>
-                <td>To Pimp a Butterfly</td>
-                <td>Kendrick Lamar</td>
-                <td>Jazz Rap</td>
-                <td>2015</td>
-              </tr>
-              <tr>
-                <td>14</td>
-                <td>The Black Saint and the Sinner Lady</td>
-                <td>Mingus</td>
-                <td>Avant-Garde Jazz</td>
-                <td>1963</td>
-              </tr>
-              <tr>
-                <td>16</td>
-                <td>A Love Supreme</td>
-                <td>John Coltrane</td>
-                <td>Spiritual Jazz</td>
-                <td>1965</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-hover" data-aos="zoom-in" data-aos-anchor-placement="center-bottom">
+              <thead>
+                <tr class="table-primary" style="text-align: left;">
+                  <th>Overall Ranking</th>
+                  <th>Album</th>
+                  <th>Artist</th>
+                  <th>Genre</th>
+                  <th>Year</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>5</td>
+                  <td>To Pimp a Butterfly</td>
+                  <td>Kendrick Lamar</td>
+                  <td>Jazz Rap</td>
+                  <td>2015</td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>The Black Saint and the Sinner Lady</td>
+                  <td>Mingus</td>
+                  <td>Avant-Garde Jazz</td>
+                  <td>1963</td>
+                </tr>
+                <tr>
+                  <td>16</td>
+                  <td>A Love Supreme</td>
+                  <td>John Coltrane</td>
+                  <td>Spiritual Jazz</td>
+                  <td>1965</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <div class="col-12 col-md-5">
-        <img src="{{url_for('static', filename='assets/illustrations/Group_4.svg')}}" alt="This is Jazz" class="img-fluid">
+        <img src="{{url_for('static', filename='assets/illustrations/Group_4.svg')}}" alt="This is Jazz"
+          class="img-fluid">
       </div>
     </div>
 
@@ -583,29 +607,50 @@
     <div class="row">
       <h1 class="text-center text-secondary display-3">Rock Music</h1>
       <div class="col-12 col-md-6">
-        <img src="{{url_for('static', filename='assets/illustrations/Group_6.svg')}}" alt="David Bowie" class="img-fluid">
+        <img src="{{url_for('static', filename='assets/illustrations/Group_6.svg')}}" alt="David Bowie"
+          class="img-fluid">
       </div>
       <div class="col-12 col-md-6" data-aos="flip-right" data-aos-anchor-placement="center-bottom">
         <h3>Rock Genres and their best Albums</h3>
-        <p>The Genre <b class="text-warning">Progressive Rock</b>  have <b class="text-warning">325</b> albums. The best is: <span class="text-secondary">Pink Floyd, Wish You Were Here[1975]</span>, Overall Ranking: <b class="text-warning">2</b> </p>
+        <p>The Genre <b class="text-warning">Progressive Rock</b> have <b class="text-warning">325</b> albums. The best
+          is: <span class="text-secondary">Pink Floyd, Wish You Were Here[1975]</span>, Overall Ranking: <b
+            class="text-warning">2</b> </p>
 
-        <p>The Genre <b class="text-warning">Alternative Rock</b>  have <b class="text-warning">174</b> albums. The best is:<span class="text-secondary">  Radiohead, OK Computer[1997]</span>, Overall Ranking: <b class="text-warning">1 </b></p>
+        <p>The Genre <b class="text-warning">Alternative Rock</b> have <b class="text-warning">174</b> albums. The best
+          is:<span class="text-secondary"> Radiohead, OK Computer[1997]</span>, Overall Ranking: <b
+            class="text-warning">1 </b></p>
 
-        <p>The Genre <b class="text-warning">Hard Rock</b>  have <b class="text-warning">169</b> albums. The best is:<span class="text-secondary">  Black Sabbath, Paranoid[1970]</span>, Overall Ranking: <b class="text-warning">18 </b></p>
+        <p>The Genre <b class="text-warning">Hard Rock</b> have <b class="text-warning">169</b> albums. The best
+          is:<span class="text-secondary"> Black Sabbath, Paranoid[1970]</span>, Overall Ranking: <b
+            class="text-warning">18 </b></p>
 
-        <p>The Genre <b class="text-warning">Pop Rock</b>  have <b class="text-warning">154</b> albums. The best is:<span class="text-secondary">  The Beatles, Abbey Road[1969]</span>, Overall Ranking: <b class="text-warning">8 </b></p>
+        <p>The Genre <b class="text-warning">Pop Rock</b> have <b class="text-warning">154</b> albums. The best is:<span
+            class="text-secondary"> The Beatles, Abbey Road[1969]</span>, Overall Ranking: <b class="text-warning">8
+          </b></p>
 
-        <p>The Genre <b class="text-warning">Art Rock</b>  have <b class="text-warning">122</b> albums. The best is:<span class="text-secondary"> Radiohead, OK Computer[1997]</span> , Overall Ranking: <b class="text-warning">1 </b></p>
+        <p>The Genre <b class="text-warning">Art Rock</b> have <b class="text-warning">122</b> albums. The best is:<span
+            class="text-secondary"> Radiohead, OK Computer[1997]</span> , Overall Ranking: <b class="text-warning">1
+          </b></p>
 
-        <p>The Genre <b class="text-warning">Psychedelic Rock</b>  have <b class="text-warning">118</b> albums. The best is:<span class="text-secondary">The Doors, The Doors[1967]</span>, Overall Ranking: <b class="text-warning">46 </b></p>
+        <p>The Genre <b class="text-warning">Psychedelic Rock</b> have <b class="text-warning">118</b> albums. The best
+          is:<span class="text-secondary">The Doors, The Doors[1967]</span>, Overall Ranking: <b class="text-warning">46
+          </b></p>
 
-        <p>The Genre <b class="text-warning">Indie Rock</b>  have <b class="text-warning">114</b> albums. The best is:<span class="text-secondary">  Neutral Milk Hotel, In the Aeroplane Over the Sea[1998]</span>, Overall Ranking: <b class="text-warning">232 </b></p>
+        <p>The Genre <b class="text-warning">Indie Rock</b> have <b class="text-warning">114</b> albums. The best
+          is:<span class="text-secondary"> Neutral Milk Hotel, In the Aeroplane Over the Sea[1998]</span>, Overall
+          Ranking: <b class="text-warning">232 </b></p>
 
-        <p>The Genre <b class="text-warning">Blues Rock</b>  have <b class="text-warning">111</b> albums. The best is:<span class="text-secondary">The Jimi Hendrix Experience</span> , Are You Experienced[1967], Overall Ranking: <b class="text-warning">57 </b></p>
+        <p>The Genre <b class="text-warning">Blues Rock</b> have <b class="text-warning">111</b> albums. The best
+          is:<span class="text-secondary">The Jimi Hendrix Experience</span> , Are You Experienced[1967], Overall
+          Ranking: <b class="text-warning">57 </b></p>
 
-        <p>The Genre <b class="text-warning">Folk Rock</b>  have <b class="text-warning">108</b> albums. The best is:<span class="text-secondary">Bob Dylan, Highway 61 Revisited[1965]</span> , Overall Ranking: <b class="text-warning">354 </b></p>
+        <p>The Genre <b class="text-warning">Folk Rock</b> have <b class="text-warning">108</b> albums. The best
+          is:<span class="text-secondary">Bob Dylan, Highway 61 Revisited[1965]</span> , Overall Ranking: <b
+            class="text-warning">354 </b></p>
 
-        <p>The Genre <b class="text-warning">Experimental Rock</b>  have <b class="text-warning">94</b> albums. The best is:<span class="text-secondary">Radiohead, Kid A[2000]</span>, Overall Ranking: <b class="text-warning">4 </b></p>
+        <p>The Genre <b class="text-warning">Experimental Rock</b> have <b class="text-warning">94</b> albums. The best
+          is:<span class="text-secondary">Radiohead, Kid A[2000]</span>, Overall Ranking: <b class="text-warning">4 </b>
+        </p>
       </div>
     </div>
 
@@ -615,120 +660,126 @@
       <h3 class="text-center text-secondary display-6">Hip Hop</h3>
       <div class="col-12 col-md-6" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
         <h3>Best Hip Hop Albums</h3>
-        <table class="table table-hover">
-  <thead>
-    <tr class="table-primary" style="text-align: left;"> 
-      <th>Ranking</th>
-      <th>Album</th>
-      <th>Artist</th>
-      <th>Year</th>
-      <th>Genre</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>5</td>
-      <td>To Pimp a Butterfly</td>
-      <td>Kendrick Lamar</td>
-      <td>2015</td>
-      <td>Conscious Hip Hop</td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>Madvillainy</td>
-      <td>Madvillain</td>
-      <td>2004</td>
-      <td>Abstract Hip Hop</td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>good kid, m.A.A.d city</td>
-      <td>Kendrick Lamar</td>
-      <td>2012</td>
-      <td>Conscious Hip Hop</td>
-    </tr>
-    <tr>
-      <td>21</td>
-      <td>Illmatic</td>
-      <td>Nas</td>
-      <td>1994</td>
-      <td>Hardcore Hip Hop</td>
-    </tr>
-    <tr>
-      <td>25</td>
-      <td>Enter the Wu-Tang (36 Chambers)</td>
-      <td>Wu-Tang Clan</td>
-      <td>1993</td>
-      <td>Hardcore Hip Hop</td>
-    </tr>
-  </tbody>
-</table>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-primary" style="text-align: left;">
+                <th>Ranking</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Year</th>
+                <th>Genre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5</td>
+                <td>To Pimp a Butterfly</td>
+                <td>Kendrick Lamar</td>
+                <td>2015</td>
+                <td>Conscious Hip Hop</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>Madvillainy</td>
+                <td>Madvillain</td>
+                <td>2004</td>
+                <td>Abstract Hip Hop</td>
+              </tr>
+              <tr>
+                <td>17</td>
+                <td>good kid, m.A.A.d city</td>
+                <td>Kendrick Lamar</td>
+                <td>2012</td>
+                <td>Conscious Hip Hop</td>
+              </tr>
+              <tr>
+                <td>21</td>
+                <td>Illmatic</td>
+                <td>Nas</td>
+                <td>1994</td>
+                <td>Hardcore Hip Hop</td>
+              </tr>
+              <tr>
+                <td>25</td>
+                <td>Enter the Wu-Tang (36 Chambers)</td>
+                <td>Wu-Tang Clan</td>
+                <td>1993</td>
+                <td>Hardcore Hip Hop</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<h4 class="text-secondary mb-0">West Vs. East</h4>
+        <h4 class="text-secondary mb-0">West Vs. East</h4>
 
-<h5>Best West Hip Hop Albums</h5>
-<table class="table table-hover">
-  <thead>
-    <tr class="table-primary" style="text-align: left;">
-      <th>Album</th>
-      <th>Artist</th>
-      <th>Year</th>
-      <th>Average Rating</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>To Pimp a Butterfly</td>
-      <td>Kendrick Lamar</td>
-      <td>2015</td>
-      <td>4.27</td>
-    </tr>
-    <tr>
-      <td>good kid, m.A.A.d city</td>
-      <td>Kendrick Lamar</td>
-      <td>2012</td>
-      <td>4.20</td>
-    </tr>
-    <tr>
-      <td>Il buono, il brutto, il cattivo</td>
-      <td>Ennio Morricone</td>
-      <td>1966</td>
-      <td>4.11</td>
-    </tr>
-  </tbody>
-</table>
+        <h5>Best West Hip Hop Albums</h5>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-primary" style="text-align: left;">
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Year</th>
+                <th>Average Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>To Pimp a Butterfly</td>
+                <td>Kendrick Lamar</td>
+                <td>2015</td>
+                <td>4.27</td>
+              </tr>
+              <tr>
+                <td>good kid, m.A.A.d city</td>
+                <td>Kendrick Lamar</td>
+                <td>2012</td>
+                <td>4.20</td>
+              </tr>
+              <tr>
+                <td>Il buono, il brutto, il cattivo</td>
+                <td>Ennio Morricone</td>
+                <td>1966</td>
+                <td>4.11</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<h5 class="mt-0">Best East Hip Hop Albums</h5>
-<table class="table table-hover">
-  <thead>
-    <tr class="table-primary" style="text-align: left;">
-      <th>Album</th>
-      <th>Artist Name</th>
-      <th>Release Date</th>
-      <th>Average Rating</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Illmatic</td>
-      <td>Nas</td>
-      <td>1994</td>
-      <td>4.20</td>
-    </tr>
-    <tr>
-      <td>Enter the Wu-Tang (36 Chambers)</td>
-      <td>Wu-Tang Clan</td>
-      <td>1993</td>
-      <td>4.19</td>
-    </tr>
-    <tr>
-      <td>The Low End Theory</td>
-      <td>A Tribe Called Quest</td>
-      <td>1991</td>
-      <td>4.12</td>
-    </tr>
-  </tbody>
-</table>
+        <h5 class="mt-0">Best East Hip Hop Albums</h5>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr class="table-primary" style="text-align: left;">
+                <th>Album</th>
+                <th>Artist Name</th>
+                <th>Release Date</th>
+                <th>Average Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Illmatic</td>
+                <td>Nas</td>
+                <td>1994</td>
+                <td>4.20</td>
+              </tr>
+              <tr>
+                <td>Enter the Wu-Tang (36 Chambers)</td>
+                <td>Wu-Tang Clan</td>
+                <td>1993</td>
+                <td>4.19</td>
+              </tr>
+              <tr>
+                <td>The Low End Theory</td>
+                <td>A Tribe Called Quest</td>
+                <td>1991</td>
+                <td>4.12</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
       </div>
       <div class="col-12 col-md-6" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
