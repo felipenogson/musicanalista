@@ -2,4 +2,8 @@
 env/
 __pycache__/
 *.swp
+.htaccess
+passenger_wsgi.py
+stderr.log
+tmp/
 
