@@ -11,7 +11,7 @@ csrf = CSRFProtect(app)
 @app.route('/')
 def index():
 	list_of_years = df['Release Date'].unique().tolist()
-	list_of_years.sort()
+	list_of_years.sort(reverse=True)
 	return render_template('index.html', years=list_of_years)
 
 @app.route('/results', methods=['POST'])

@@ -17,3 +17,9 @@ hr{
 	width: 50%;
 	border-radius: 10px;
 }
+
+#info-icon {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+}

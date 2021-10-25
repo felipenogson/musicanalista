@@ -4,6 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎶</text></svg>">
+
+
   <title>Music Analista</title>
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
@@ -13,7 +17,12 @@
 </head>
 
 <body>
-  <div class="container-fluid">
+  <div id="info-icon">
+		<a href="#information">
+			<img src="{{ url_for('static', filename='assets/info.png') }}" alt="Info icon">
+		</a>
+	</div>
+  <div class="container-fluid" id="start">
     <div class="row" id="hero">
       <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
         <h1 class="text-white display-1 mx-3">Music Analista</h1>
@@ -30,8 +39,10 @@
               {% endfor %}
             </select>
             <button type="submit" class="btn btn-outline-secondary my-2">Go Find it !</button>
-            <img src="{{ url_for('static', filename='assets/loader.svg') }}" class="htmx-indicator mx-5" id="spinner"
-              alt="Retrieving data">
+            <div style=" display: inline; " class="htmx-indicator" id="spinner">
+              <img src="/static/assets/loader.svg" class="htmx-indicator mx-5" alt="Retrieving data">
+              <p class="text-warning htmx-indicator">Wait, Retrieving Data..</p>
+            </div>
           </div>
         </form>
       </div>
@@ -66,49 +77,49 @@
                 <th>1</th>
                 <td>OK Computer</td>
                 <td>Radiohead</td>
-                <td>Alternative Rock, Art Rock</td>
+                <td>Alternative Rock</td>
                 <td>1997</td>
               </tr>
               <tr>
                 <th>2</th>
                 <td>Wish You Were Here</td>
                 <td>Pink Floyd</td>
-                <td>Progressive Rock, Art Rock</td>
+                <td>Progressive Rock</td>
                 <td>1975</td>
               </tr>
               <tr>
                 <th>3</th>
                 <td>In the Court of the Crimson King</td>
                 <td>King Crimson</td>
-                <td>Progressive Rock, Art Rock</td>
+                <td>Progressive Rock</td>
                 <td>1969</td>
               </tr>
               <tr>
                 <th>4</th>
                 <td>Kid A</td>
                 <td>Radiohead</td>
-                <td>Art Rock, Experimental Rock, Electronic</td>
+                <td>Art Rock</td>
                 <td>2000</td>
               </tr>
               <tr>
                 <th>5</th>
                 <td>To Pimp a Butterfly</td>
                 <td>Kendrick Lamar</td>
-                <td>Conscious Hip Hop, West Coast Hip Hop, Jazz Rap</td>
+                <td>Conscious Hip Hop</td>
                 <td>2015</td>
               </tr>
               <tr>
                 <th>6</th>
                 <td>Loveless</td>
                 <td>My Bloody Valentine</td>
-                <td>Shoegaze, Noise Pop</td>
+                <td>Shoegaze</td>
                 <td>1991</td>
               </tr>
               <tr>
                 <th>7</th>
                 <td>The Dark Side of the Moon</td>
                 <td>Pink Floyd</td>
-                <td>Art Rock, Progressive Rock</td>
+                <td>Art Rock</td>
                 <td>1973</td>
               </tr>
               <tr>
@@ -122,14 +133,14 @@
                 <th>9</th>
                 <td>The Velvet Underground &amp; Nico</td>
                 <td>The Velvet Underground &amp; Nico</td>
-                <td>Art Rock, Experimental Rock</td>
+                <td>Art Rock</td>
                 <td>1967</td>
               </tr>
               <tr>
                 <th>10</th>
                 <td>The Rise and Fall of Ziggy Stardust and the Spiders From Mars</td>
                 <td>David Bowie</td>
-                <td>Glam Rock, Pop Rock</td>
+                <td>Glam Rock</td>
                 <td>1972</td>
               </tr>
             </tbody>
@@ -271,10 +282,10 @@
                 <td>The Smiths</td>
                 <td>Jangle Pop</td>
               </tr>
-              <tr class="table-warning">
+              <tr>
                 <td>1989</td>
                 <td>Doolittle</td>
-                <td>Pixies</td>
+                <td>⭐Pixies</td>
                 <td>Alternative Rock</td>
               </tr>
               <tr>
@@ -306,31 +317,31 @@
                 <td>1997</td>
                 <td>OK Computer</td>
                 <td>Radiohead</td>
-                <td>Alternative Rock, Art Rock</td>
+                <td>Alternative Rock</td>
               </tr>
               <tr>
                 <td>1991</td>
                 <td>Loveless</td>
                 <td>My Bloody Valentine</td>
-                <td>Shoegaze, Noise Pop</td>
+                <td>Shoegaze</td>
               </tr>
               <tr>
                 <td>1994</td>
                 <td>Illmatic</td>
                 <td>Nas</td>
-                <td>East Coast Hip Hop, Boom Bap, Hardcore Hip Hop</td>
+                <td>Hardcore Hip Hop</td>
               </tr>
               <tr>
                 <td>1998</td>
                 <td>In the Aeroplane Over the Sea</td>
                 <td>Neutral Milk Hotel</td>
-                <td>Indie Folk, Indie Rock</td>
+                <td>Indie Folk</td>
               </tr>
               <tr>
                 <td>1993</td>
                 <td>Enter the Wu-Tang (36 Chambers)</td>
                 <td>Wu-Tang Clan</td>
-                <td>East Coast Hip Hop, Boom Bap, Hardcore Hip Hop</td>
+                <td>Hardcore Hip Hop</td>
               </tr>
             </tbody>
           </table>
@@ -353,13 +364,13 @@
                 <td>2000</td>
                 <td>Kid A</td>
                 <td>Radiohead</td>
-                <td>Art Rock, Experimental Rock, Electronic</td>
+                <td>Art Rock</td>
               </tr>
               <tr>
                 <td>2015</td>
                 <td>To Pimp a Butterfly</td>
                 <td>Kendrick Lamar</td>
-                <td>Conscious Hip Hop, West Coast Hip Hop, Jazz Rap</td>
+                <td>Conscious Hip Hop</td>
               </tr>
               <tr>
                 <td>2004</td>
@@ -371,13 +382,13 @@
                 <td>2007</td>
                 <td>In Rainbows</td>
                 <td>Radiohead</td>
-                <td>Art Rock, Alternative Rock</td>
+                <td>Art Rock</td>
               </tr>
               <tr>
                 <td>2012</td>
                 <td>good kid, m.A.A.d city</td>
                 <td>Kendrick Lamar</td>
-                <td>West Coast Hip Hop, Conscious Hip Hop</td>
+                <td>Conscious Hip Hop</td>
               </tr>
             </tbody>
           </table>
@@ -641,7 +652,7 @@
           Ranking: <b class="text-warning">232 </b></p>
 
         <p>The Genre <b class="text-warning">Blues Rock</b> have <b class="text-warning">111</b> albums. The best
-          is:<span class="text-secondary">The Jimi Hendrix Experience</span> , Are You Experienced[1967], Overall
+          is:<span class="text-secondary">The Jimi Hendrix Experience, Are You Experienced[1967]</span>, Overall
           Ranking: <b class="text-warning">57 </b></p>
 
         <p>The Genre <b class="text-warning">Folk Rock</b> have <b class="text-warning">108</b> albums. The best
@@ -794,6 +805,75 @@
     <div class="row" id="results">
 
     </div>
+
+    <hr class="bg-secondary mx-auto mb-5" size="10">
+    <div class="col-12 text-center">
+      <a href="#start" class="btn btn-outline-primary btn-lg text-center">^<br>Go Back</a>
+    </div>
+
+    <footer class="bg-dark mt-5" id='information'>
+      <div class="col-12">
+        <p> <span class="display-6 text-success">Web app</span> where you can find the best album released in the year given.</p>
+        <p>Check the webapp working on <a href="http://nogson.com/musicanalista">MusicAnalista</a></p>
+        <p>Watch the Notebook for the data on <a
+            href="https://colab.research.google.com/drive/1l2q_h4s_PZI8nWbJB5Wi7UN5u8Lcd1aY?usp=sharing">Google
+            Colab</a></p>
+        <p>Download the dataset from <a
+            href="https://www.kaggle.com/michaelbryantds/top-5000-albums-of-all-time-rateyourmusiccom">kaggle</a></p>
+        <h2 id="faq" class="text-danger">FAQ</h2>
+        <h4 id="what-is-this-" class="text-success">What is this?</h4>
+        <p>This is the results that I found exploring a dataset about music albums,</p>
+        <h4 id="why-" class="text-success">Why?</h4>
+        <p> What can I say, I love music. Also I love to code too, so I add a small feature where you can search for the
+          best album released in the year specified.</p>
+        <h4 id="where-this-data-came-from-" class="text-success">Where this data came from?</h4>
+        <p>I found this data set on <a
+            href="https://www.kaggle.com/michaelbryantds/top-5000-albums-of-all-time-rateyourmusiccom">Kaggle</a></p>
+        <p>Context
+          This dataset contains the top 5000 albums of all time as decided on by the users of <a
+            href="rateyourmusic.com">rateyourmusic.com</a>.</p>
+        <p>Content
+          The dataset was acquired by scraping on 12 October 2021. It contains 5000 ranked albums including ranking,
+          album name, artist name, release date, genres, descriptors, average rating, number of ratings, and number of
+          reviews.</p>
+        <p>The scraper can be found at <a href="https://github.com/michaelbryantds/rateyourmusic-scraper">this GitHub
+            repo</a>.</p>
+        <h4 id="you-should-be-very-bussy-isn-t-it-" class="text-success">You should be very bussy, isn&#39;t it?</h4>
+        <p>Thanks for asking. Actually no, I don&#39;t do this for a living, but I love to do it, so what I am trying to
+          say is that I am open for hiring. If you think that I can help you or your team, don&#39;t hestitate on
+          contact me <a
+            href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#102;&#101;&#108;&#x69;&#112;&#101;&#x40;&#110;&#111;&#103;&#115;&#x6f;&#110;&#46;&#99;&#x6f;&#x6d;">&#102;&#101;&#108;&#x69;&#112;&#101;&#x40;&#110;&#111;&#103;&#115;&#x6f;&#110;&#46;&#99;&#x6f;&#x6d;</a>.
+        </p>
+        <h2 id="tech-stack" class="text-danger">Tech Stack</h2>
+        <p><strong>Client:</strong> HTML, CSS, Javascript, Bootstrap 5, &lt;/&gt;htmx, </p>
+        <p><strong>Server:</strong> Python, Flask</p>
+        <p><strong>Data Exploration:</strong> Pandas, Google Colab</p>
+        <p><strong>Libraries and APIs:</strong> wikipedia, musicbrainz </p>
+        <h2 id="authors">Authors</h2>
+        <p>Feel free to contact me, I&#39;m a random guy who loves to code.</p>
+        <ul>
+          <li><a href="https://github.com/felipenogson">@felipenogson</a></li>
+          <li><a href="http://felipon.org">My Blog</a> (not tech related)</li>
+          <li>Email: <a
+              href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#102;&#101;&#108;&#105;&#112;&#x65;&#x40;&#110;&#x6f;&#103;&#115;&#x6f;&#x6e;&#x2e;&#99;&#111;&#x6d;">&#102;&#101;&#108;&#105;&#112;&#x65;&#x40;&#110;&#x6f;&#103;&#115;&#x6f;&#x6e;&#x2e;&#99;&#111;&#x6d;</a>
+          </li>
+        </ul>
+        <h2 id="-skills" class="text-danger">🛠 Skills</h2>
+        <p>Linux, Python, Flask, SQL, Javascript, HTML, CSS, Bootstrap ...</p>
+        <h2 id="acknowledgements">Acknowledgements</h2>
+        <ul>
+          <li><a href="https://opensource.org">Open Source Communit</a> For all the free software and technology.</li>
+          <li><a href="https://bootwatch.com">Bootwatch</a> Beautiful themes for bootstrap</li>
+          <li><a href="https://www.figma.com/community/file/883778082594341562">The tree tree top</a> For the very nice
+            illustrations.</li>
+          <li><a href="https://loading.io/icon/">icon &#39;ninja&#39; from loading.io</a></li>
+          <li><a href="https://www.kaggle.com/michaelbryantds/top-5000-albums-of-all-time-rateyourmusiccom">kaggle</a>
+            For the Data</li>
+        </ul>
+        <h2 id="feedback" class="text-danger">Feedback</h2>
+        <p>If you have any feedback, please reach out to felipe@nogson.com</p>
+      </div>
+    </footer>
 
   </div>
 
