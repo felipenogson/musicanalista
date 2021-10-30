@@ -6,4 +6,5 @@ __pycache__/
 passenger_wsgi.py
 stderr.log
 tmp/
+html/
 
